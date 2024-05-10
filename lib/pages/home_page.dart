@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app/pages/category_view.dart';
 import 'package:news_app/pages/widgets/drawer_widget.dart';
 
 import '../model/categgorie_model.dart';
@@ -16,32 +17,32 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   List<CategoryModel> categoriesList = [
     CategoryModel(
-        id: "Sports",
+        id: "sports",
         title: "Sports",
         backGroundColor: const Color(0XFFC91C22),
         image: "assets/images/sports.png"),
     CategoryModel(
-        id: "Politics",
+        id: "politics",
         title: "Politics",
         backGroundColor: const Color(0XFF003E90),
         image: "assets/images/Politics.png"),
     CategoryModel(
-        id: "Health",
+        id: "health",
         title: "Health",
         backGroundColor: const Color(0XFFED1E79),
         image: "assets/images/health.png"),
     CategoryModel(
-        id: "Business",
+        id: "business",
         title: "Business",
         backGroundColor: const Color(0XFFCF7E48),
         image: "assets/images/bussines.png"),
     CategoryModel(
-        id: "Environment",
+        id: "environment",
         title: "Environment",
         backGroundColor: const Color(0XFF4882CF),
         image: "assets/images/environment.png"),
     CategoryModel(
-        id: "Science",
+        id: "science",
         title: "Science",
         backGroundColor: const Color(0XFFF2D352),
         image: "assets/images/science.png"),
@@ -74,7 +75,7 @@ class _homeScreenState extends State<homeScreen> {
           ),
           drawer: DrawerWidget(
             selectedCategory: selectedCategory,
-            onPresed: onPresed,
+            onPresed: onPressed,
           ),
           body: selectedCategory == null
               ? Padding(
@@ -107,7 +108,7 @@ class _homeScreenState extends State<homeScreen> {
                     ],
                   ),
                 )
-              : Container(),
+              : CategoryView(selected: selectedCategory!),
         ));
   }
 
@@ -119,7 +120,7 @@ class _homeScreenState extends State<homeScreen> {
     setState(() {});
   }
 
-  onPresed() {
+  onPressed() {
     selectedCategory = null;
     Navigator.pop(context);
     setState(() {});
